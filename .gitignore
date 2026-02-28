@@ -1,0 +1,17 @@
+# Environments
+.env
+.venv/
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Node.js (for your second system later)
+node_modules/
+dist/
+
+# IDEs
+.vscode/
+.idea/
