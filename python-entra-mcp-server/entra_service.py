@@ -80,6 +80,41 @@ class EntraService:
         except Exception as e:
             return f"Error fetching groups: {str(e)}"
 
+    async def get_app_access_map(self):
+        """
+        Returns a synthetic mapping of Applications to their required Entra Groups.
+        In a real scenario, this would query Service Principals and App Role Assignments.
+        """
+        # Synthetic Data Store
+        app_mapping = [
+            {
+                "app_name": "Salesforce",
+                "description": "CRM Platform",
+                "required_group_name": "GRP_Salesforce_Users",
+                "group_id": "00000000-0000-0000-0000-0001"
+            },
+            {
+                "app_name": "AWS Console",
+                "description": "Cloud Infrastructure Access",
+                "required_group_name": "GRP_AWS_Admins",
+                "group_id": "00000000-0000-0000-0000-0002"
+            },
+            {
+                "app_name": "GitHub Enterprise",
+                "description": "Source Control Management",
+                "required_group_name": "GRP_GitHub_Developers",
+                "group_id": "00000000-0000-0000-0000-0003"
+            },
+            {
+                "app_name": "ServiceNow",
+                "description": "ITSM and Ticketing",
+                "required_group_name": "GRP_ServiceNow_Standard",
+                "group_id": "00000000-0000-0000-0000-0004"
+            }
+        ]
+        return app_mapping
+
+
     async def add_member(self, group_id: str, user_id: str):
         """Adds a user to a group using the $ref endpoint."""
         try:

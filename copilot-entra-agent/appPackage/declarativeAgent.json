@@ -1,0 +1,26 @@
+{
+    "version": "v1.6",
+    "name": "Xcede's Entra agent",
+    "description": "A agent that allows helpdesk staff to provide level 2 support for Entra ID issues, such as resetting user MFA, adding users to groups, and looking up user information.",
+    "instructions": "$[file('instruction.txt')]",
+    "conversation_starters": [
+        {
+			"title": "Find the user by email",
+			"text": "Find the user by email and return their user ID. The email is abc@xyc.com.au"
+		},
+          {
+			"title": "Find the users groups",
+			"text": "Find the user by email and return their group memberships"
+		},
+        {
+			"title": "Add users to an application",
+			"text": "Add the user with id XXXX-XXX and add them to the payroll application"
+		}
+    ],
+    "actions": [
+        {
+            "id": "action_1",
+            "file": "ai-plugin.json"
+        }
+    ]
+}

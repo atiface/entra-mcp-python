@@ -1,0 +1,50 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+    "schema_version": "v2.4",
+    "name_for_human": "copilot-entra-agent",
+    "description_for_human": "copilot-entra-agent${{APP_NAME_SUFFIX}}",
+    "contact_email": "publisher-email@example.com",
+    "namespace": "copilotentraagent",
+    "functions": [
+        {
+            "name": "add_user_to_group",
+            "description": "Add a specific user to a group."
+        },
+        {
+            "name": "get_application_permissions_map",
+            "description": "\nReturns a list of applications and the Entra ID groups required to access them.\nUse this tool when a user asks for access to a specific software or platform\nto identify which group_id should be used with add_user_to_group.\n"
+        },
+        {
+            "name": "get_user_groups",
+            "description": "List all groups for a user."
+        },
+        {
+            "name": "lookup_user",
+            "description": "Find a user in Entra ID using their email or display name."
+        },
+        {
+            "name": "manage_group",
+            "description": "Create a Security or M365 group and optionally enable Teams."
+        }
+    ],
+    "runtimes": [
+        {
+            "type": "RemoteMCPServer",
+            "spec": {
+                "url": "https://9pdt9jjv-8000.aue.devtunnels.ms/mcp",
+                "enable_dynamic_discovery": true
+              
+            },
+            "run_for_functions": [
+                "add_user_to_group",
+                "get_application_permissions_map",
+                "get_user_groups",
+                "lookup_user",
+                "manage_group"
+            ],
+            "auth": {
+                "type": "None"
+            }
+        }
+    ]
+}
