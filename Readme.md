@@ -120,14 +120,14 @@ Before connecting to Copilot, use the **MCP Inspector** to verify your tools are
     
 2.  JSON"capabilities": \[ { "name": "mcp-server", "mcp\_endpoint": "\[https://YOUR-TUNNEL-ID.devtunnels.ms/mcp\](https://YOUR-TUNNEL-ID.devtunnels.ms/mcp)" }\]
     
-3.  **Provision via Teams Toolkit:**
+3.  **Provision via M365 agetn Toolkit:**
     
     *   Open **VS Code**.
         
-    *   Click the **Teams Toolkit** icon in the sidebar.
+    *   Click the **M365 agent Toolkit** icon in the sidebar.
         
     *   Under **Lifecycle**, click **Provision**.
         
-    *   Once finished, press **F5** to launch the agent in Teams.
+    *   Once finished, go to copilot chat and you'll see your agent on the side bar.
         
 4.  **Chat with the Agent:** In Copilot agent, select your new agent and type: _"Find user Jane Smith and tell me what groups she is in."_
