@@ -1,12 +1,23 @@
 # Entra ID Management - MCP & Copilot Agent
 
-This project provides a **Declarative Copilot Agent** powered by a **Python MCP (Model Context Protocol) Server**. It allows administrators to manage Entra ID users and group-based application access using natural language through Microsoft Teams.
+This project provides a **Declarative Copilot Agent** powered by a **Python MCP (Model Context Protocol) Server**. It allows administrators to manage Entra ID users and group-based application access using natural language through Microsoft Copilot. The intended audience is help desk staff who provide level 1 support but need to escalate some things to other engineering staff. This Entra CoPilot agent will empower them to use natural language to do tasks such as granting access to an application or adding user to a group. I have only implemented some samples however the idea is that you will be able to manage everyting through this CoPilot agent without needing to logon to Entra portal, escalate your privileges or go through jumpboxes etc. This solves a very real problem that is present in enterprises and should make life easy for some staff.
 
 > [!CAUTION]
 > ### 🛑 Hobby Project - Not Production Grade
 > **This is an educational project only.** It does not contain authentication or production-hardened security.
 > 
 > The sole purpose is to demonstrate the capabilities made possible through **Copilot agents** and **MCP servers**. This is a "teaser" for performing real-world tasks through natural language—the possibilities are truly endless.
+
+> [!IMPORTANT]
+> ## 🎒 Prerequisites - What to Bring
+> Before the hackathon, make sure you have the following ready:
+> 
+> | Requirement | Description |
+> |-------------|-------------|
+> | 🎫 **Microsoft 365 Copilot License** | You need an active Microsoft 365 Copilot license to test and deploy agents |
+> | 🏢 **Tenant with Sideloading Enabled** | Access to a Microsoft 365 tenant where you can sideload custom apps for testing |
+> | ☁️ **Azure Subscription** | Required to create resources for Custom Engine Agents (CEA) |
+
 
 ## 1. System Architecture
 
