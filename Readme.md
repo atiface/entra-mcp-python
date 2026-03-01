@@ -14,6 +14,53 @@ The solution uses a multi-layered approach to bridge the gap between LLM reasoni
 4.  **Microsoft Graph API:** The engine that performs the actual changes in Entra ID.
 5.  **Entra ID:** The identity provider containing your users and groups.
 
+
+```mermaid
+graph TD
+    %% Define Nodes and Styles
+    subgraph UserInterface ["Microsoft 365 Client"]
+        style UserInterface fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+        Teams[Microsoft Teams / Copilot Chat]
+    end
+
+    subgraph MicrosoftCloud ["Microsoft 365 Cloud"]
+        style MicrosoftCloud fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+        Copilot["Copilot for Microsoft 365 (LLM)"]
+    end
+
+    subgraph LocalMachine ["Local Development Machine"]
+        style LocalMachine fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+        Tunnel["Dev Tunnel (HTTPS Relay)"]
+        
+        subgraph MCPServer ["Python MCP Server (Starlette)"]
+            style MCPServer fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+            ToolsAPI["MCP Tools API (SSE)"]
+            AppMap[Application Permissions Map]
+            Auth["App Registration Credentials (Client ID/Secret)"]
+        end
+    end
+
+    subgraph Azure ["Azure Cloud / Entra ID"]
+        style Azure fill:#fffde7,stroke:#f57f17,stroke-width:2px;
+        GraphAPI[Microsoft Graph API]
+        EntraID["Microsoft Entra ID (Users, Groups, App Roles)"]
+    end
+
+    %% Define Connections and Flow
+    Teams -->|User Prompt: 'Give John access to AWS'| Copilot
+    Copilot -.->|1. Fetch Tool Definitions| ToolsAPI
+    Copilot ==>|2. Execute Tool Request| ToolsAPI
+    ToolsAPI --- Tunnel
+    Tunnel ===>|Secure HTTPS Forwarding| Copilot
+    ToolsAPI -->|Look up mapped group ID| AppMap
+    MCPServer ==>|Authenticated API Call| GraphAPI
+    Auth -.->|Provides Token| GraphAPI
+    GraphAPI ==>|Perform Operation| EntraID
+    EntraID ==>|Success/Error| GraphAPI
+    GraphAPI ==>|JSON Response| MCPServer
+    MCPServer ==>|SSE Event| Copilot
+    Copilot ==>|Natural Language Response| Teams
+```
 ---
 
 ## 2. Configure Entra ID App Registration
@@ -71,7 +118,7 @@ Before connecting to Copilot, use the **MCP Inspector** to verify your tools are
 
 1.  PowerShelldevtunnel host -p 8000 --allow-anonymous_Copy the provided .devtunnels.ms URL._
     
-2.  JSON"capabilities": \[ { "name": "mcp-server", "mcp\_endpoint": "\[https://YOUR-TUNNEL-ID.devtunnels.ms/sse\](https://YOUR-TUNNEL-ID.devtunnels.ms/sse)" }\]
+2.  JSON"capabilities": \[ { "name": "mcp-server", "mcp\_endpoint": "\[https://YOUR-TUNNEL-ID.devtunnels.ms/mcp\](https://YOUR-TUNNEL-ID.devtunnels.ms/mcp)" }\]
     
 3.  **Provision via Teams Toolkit:**
     
@@ -83,4 +130,4 @@ Before connecting to Copilot, use the **MCP Inspector** to verify your tools are
         
     *   Once finished, press **F5** to launch the agent in Teams.
         
-4.  **Chat with the Agent:**In Copilot agent, select your new agent and type: _"Find user Jane Smith and tell me what groups she is in."_
+4.  **Chat with the Agent:** In Copilot agent, select your new agent and type: _"Find user Jane Smith and tell me what groups she is in."_
