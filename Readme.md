@@ -2,6 +2,12 @@
 
 This project provides a **Declarative Copilot Agent** powered by a **Python MCP (Model Context Protocol) Server**. It allows administrators to manage Entra ID users and group-based application access using natural language through Microsoft Teams.
 
+> [!CAUTION]
+> ### 🛑 Hobby Project - Not Production Grade
+> **This is an educational project only.** It does not contain authentication or production-hardened security.
+> 
+> The sole purpose is to demonstrate the capabilities made possible through **Copilot agents** and **MCP servers**. This is a "teaser" for performing real-world tasks through natural language—the possibilities are truly endless.
+
 ## 1. System Architecture
 
 The solution uses a multi-layered approach to bridge the gap between LLM reasoning and secure identity management.
