@@ -10,13 +10,12 @@ This project provides a **Declarative Copilot Agent** powered by a **Python MCP 
 
 > [!IMPORTANT]
 > ## 🎒 Prerequisites - What to Bring
-> Before the hackathon, make sure you have the following ready:
+> Before deploying, make sure you have the following ready:
 > 
 > | Requirement | Description |
 > |-------------|-------------|
 > | 🎫 **Microsoft 365 Copilot License** | You need an active Microsoft 365 Copilot license to test and deploy agents |
 > | 🏢 **Tenant with Sideloading Enabled** | Access to a Microsoft 365 tenant where you can sideload custom apps for testing |
-> | ☁️ **Azure Subscription** | Required to create resources for Custom Engine Agents (CEA) |
 
 
 ## 1. System Architecture
