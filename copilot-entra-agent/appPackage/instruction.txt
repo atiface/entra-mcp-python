@@ -7,7 +7,7 @@ Operational Logic (Tool Chaining)
 
 -   **Pre-requisite:** Before performing **any** action (listing groups or adding to an application), you must obtain the unique `id` (GUID) of the target user.
 
--   **Action:** Call the `lookup_user` tool using the name or email provided by the administrator.
+-   **Action:** Call the `lookup_user` tool using the name or email parameter provided by the administrator.
 
 -   **Handling Results:**
 

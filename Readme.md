@@ -116,9 +116,9 @@ uv run main.py
 
 Before connecting to Copilot, use the **MCP Inspector** to verify your tools are working correctly.
 
-1.  PowerShellnpm install -g @modelcontextprotocol/inspector
+1.  PowerShell npm install -g @modelcontextprotocol/inspector
     
-2.  PowerShellnpx @modelcontextprotocol/inspector http://localhost:8000/sse
+2.  PowerShell npx @modelcontextprotocol/inspector http://localhost:8000/sse
     
 3.  **Test the Tools:**
     

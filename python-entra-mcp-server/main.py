@@ -14,14 +14,23 @@ mcp = FastMCP("EntraID-Manager", stateless_http=True)
 service = EntraService(GraphFactory().get_client())
 
 @mcp.tool()
-async def lookup_user(email_or_name: str):
-    """Find a user in Entra ID using their email or display name."""
-    user = await service.get_user(email_or_name)
+async def lookup_user(query: str):
+    """
+        Look up a user in Entra ID. 
+        Requires 'query' (the user's name or email).
+        """
+
+    if not query:
+        return "Error: You must provide a name or email to search for."
+    user = await service.get_user(query)
     return {"id": user["id"], "name": user["displayName"]} if user else "User not found"
 
 @mcp.tool()
 async def get_user_groups(user_id: str):
-    """List all groups for a user."""
+    """
+        Retrieves all Entra ID groups a specific user belongs to.
+        Expects 'user_id', which is the unique GUID found via lookup_user.
+        """
     return await service.list_user_groups(user_id)
 
 @mcp.tool()

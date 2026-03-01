@@ -16,11 +16,11 @@
         },
         {
             "name": "get_user_groups",
-            "description": "List all groups for a user."
+            "description": "\nRetrieves all Entra ID groups a specific user belongs to.\nExpects 'user_id', which is the unique GUID found via lookup_user.\n"
         },
         {
             "name": "lookup_user",
-            "description": "Find a user in Entra ID using their email or display name."
+            "description": "\nLook up a user in Entra ID. \nRequires 'query' (the user's name or email).\n"
         },
         {
             "name": "manage_group",
@@ -31,10 +31,8 @@
         {
             "type": "RemoteMCPServer",
             "spec": {
-                "url": "https://9pdt9jjv-8000.aue.devtunnels.ms/mcp",
-                "enable_dynamic_discovery": true
-              
-            },
+                "url": "https://9pdt9jjv-8000.aue.devtunnels.ms/mcp"
+                  },
             "run_for_functions": [
                 "add_user_to_group",
                 "get_application_permissions_map",
